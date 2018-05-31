@@ -50,7 +50,7 @@ router.post("/login", (req, res) => {
 
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
-        res.json({ Msg: "Success" });
+        
         paylaod = { id: user.id, name: user.name, avatar: user.avatar };
         jwt.sign(
           paylaod,
@@ -59,7 +59,7 @@ router.post("/login", (req, res) => {
           (err, token) => {
             res.json({
               success: true,
-              token: "Bearer" + token
+              token: "Bearer  " + token
             });
           }
         );

@@ -4,6 +4,7 @@ var gravatar = require("gravatar");
 var bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
+const passport = require("passport");
 
 const User = require("../../models/User");
 
@@ -50,8 +51,7 @@ router.post("/login", (req, res) => {
 
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
-        
-        paylaod = { id: user.id, name: user.name, avatar: user.avatar };
+        const paylaod = { id: user.id, name: user.name, avatar: user.avatar };
         jwt.sign(
           paylaod,
           keys.secretOrKey,
@@ -69,5 +69,16 @@ router.post("/login", (req, res) => {
     });
   });
 });
+
+router.get(
+  "./current",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    res.json({
+      id: req.user.id,
+      name: req.user.name
+    });
+  }
+);
 
 module.exports = router;

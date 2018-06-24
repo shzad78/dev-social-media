@@ -1,16 +1,18 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class Login extends Component {
   constructor() {
     super();
     this.state = {
-      eamil: "",
-      password: "",
+      email: '',
+      password: '',
       errors: {}
     };
+
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+
   onSubmit(e) {
     e.preventDefault();
 
@@ -18,8 +20,10 @@ class Login extends Component {
       email: this.state.email,
       password: this.state.password
     };
+
     console.log(user);
   }
+
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -64,4 +68,5 @@ class Login extends Component {
     );
   }
 }
+
 export default Login;

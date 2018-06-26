@@ -1,18 +1,17 @@
 {
-  "name": "dev-social-media",
+  "name": "devconnector",
   "version": "1.0.0",
   "description": "Social network for developers",
   "main": "server.js",
   "scripts": {
-    "client-install": "npm install --prefix clinet",
+    "client-install": "npm install --prefix client",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server \"  \"npm run client \""
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "author": "Shahzad babar",
+  "author": "Brad Traversy",
   "license": "MIT",
-  "repository": "git://github.com/shzad78/dev-social-media.git",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",

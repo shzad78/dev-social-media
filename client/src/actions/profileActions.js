@@ -11,7 +11,11 @@ export const getCurrentProfile = () => dispatch  =>{
         })
     )
     .catch(err=>
-    dispatch)
+    dispatch({
+        type: GET_PROFILE,
+            payload: {}
+    })
+);
 }
 //profile loading 
 export const setProfileLoading = () => {

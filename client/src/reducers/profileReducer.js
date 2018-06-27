@@ -1,4 +1,5 @@
 import { SET_CURRENT_USER } from '../actions/types';
+import {GET_PROFILE, PROFILE_LOADING} from '../actions/types';
 
 const initialState = {
   profile : null,
@@ -8,11 +9,18 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case SET_CURRENT_USER:
+    case PROFILE_LOADING:
       return {
         ...state,
-        isAuthenticated: !isEmpty(action.payload),
-        user: action.payload
+        loading: true,
+        
+      };
+      case GET_PROFILE:
+      return {
+        ...state,
+        profile: action.payload,
+        loading: false
+        
       };
     default:
       return state;

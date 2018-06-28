@@ -30,7 +30,7 @@ export const setProfileLoading = () => {
   };
 };
 // clear profile
-export const clearCurrnetProfile = () => {
+export const clearCurrentProfile = () => {
   return {
     type: CLEAR_CURRENT_PROFILE
   };

@@ -8,6 +8,10 @@ import {getCurrentProfile} from '../../actions/profileActions';
          this.props.getCurrentProfile();
      }
   render() {
+          const {user} = this.props.auth;
+          const {profile, loading } = this.props.profile;
+
+
     return (
       <div>
         <h1>Dashboard</h1>
@@ -15,4 +19,14 @@ import {getCurrentProfile} from '../../actions/profileActions';
     )
   }
 }
-export default connect(null, {getCurrentProfile} ) (Dashboard);
+Dashboard.prototype={
+  getCurrentProfile: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired
+}
+
+const mapStateToProps= state => ({
+  profile: state.profile,
+  auth : state.auth
+});
+export default connect(mapStateToProps, {getCurrentProfile} ) (Dashboard);

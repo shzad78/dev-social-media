@@ -10,11 +10,30 @@ import {getCurrentProfile} from '../../actions/profileActions';
   render() {
           const {user} = this.props.auth;
           const {profile, loading } = this.props.profile;
+          let dashboardContent;
+          if (profile=== null || loading){
+            dashboardContent= <h4>Loading</h4>
+          }else{
+            if (Object.keys(profile).length>0){
+
+              dashboardContent = <h4>TODO: Display Profile</h4>
+            } else {
+              dashboardContent = <h4>Create your profile</h4>
+            }
+            
+          }
 
 
     return (
-      <div>
-        <h1>Dashboard</h1>
+      <div className="dashboard">
+      <div className="container">
+      <div className="row">
+      <div className="col-md-12">
+      <h1 className="display-4">Dashboard</h1>
+      {dashboardContent}
+      </div>
+      </div>
+      </div>
       </div>
     )
   }

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profileActions';
 import Spinner from '../common/Spinner';
+import ProfileAction from './ProfileAction';
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -26,7 +27,8 @@ class Dashboard extends Component {
         // User is logged in but has no profile
         dashboardContent = (
           <div>
-            <p className="lead text-muted">Welcome {user.name}</p>
+            <p className="lead text-muted">Welcome <Link to={´/profile/${profile.handle}´}>
+             {user.name} </Link></p>
             <p>You have not yet setup a profile, please add some info</p>
             <Link to="/create-profile" className="btn btn-lg btn-info">
               Create Profile
